@@ -30,28 +30,37 @@ def start_db():
         # Confirmar los cambios realizados en la base de datos
         conn.commit()
 
-    # Crear la tabla 'Users' si no existe.
+    # Crear la tabla 'Users' si no existe o actualizar su esquema para incluir el campo Email
     # Esta tabla almacena la información de los usuarios registrados.
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS Users (
             WORKID TEXT PRIMARY KEY,  -- Clave primaria vinculada con 'ValidWorkID'
-            First TEXT,               -- Nombre del usuario
-            Last TEXT,                -- Apellido del usuario
-            Password TEXT,            -- Contraseña del usuario (almacenada como hash)
-            Role TEXT                 -- Rol del usuario (Admin, Manager, User)
+            First TEXT NOT NULL,      -- Nombre del usuario
+            Last TEXT NOT NULL,       -- Apellido del usuario
+            Password TEXT NOT NULL,   -- Contraseña del usuario (almacenada como hash)
+            Email TEXT NOT NULL,      -- Correo electrónico del usuario
+            Role TEXT NOT NULL        -- Rol del usuario (Admin, Manager, User)
         )
     ''')
+
+    # Verificar si la columna 'Email' existe (en caso de actualización de la tabla)
+    cursor.execute("PRAGMA table_info(Users)")
+    columns = [column[1] for column in cursor.fetchall()]
+    if 'Email' not in columns:
+        # Agregar la columna 'Email' si no existe
+        cursor.execute("ALTER TABLE Users ADD COLUMN Email TEXT NOT NULL")
 
     # Crear la tabla 'Files' si no existe.
     # Esta tabla almacena los archivos subidos por los usuarios.
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS Files (
             FileId INTEGER PRIMARY KEY AUTOINCREMENT,  -- ID único autoincremental para cada archivo
-            FileName TEXT,                             -- Nombre del archivo
-            FileData BLOB,                             -- Contenido del archivo almacenado como BLOB
-            WorkID TEXT                                -- WorkID del usuario que subió el archivo
+            FileName TEXT NOT NULL,                   -- Nombre del archivo
+            FileData BLOB NOT NULL,                   -- Contenido del archivo almacenado como BLOB
+            WorkID TEXT NOT NULL                      -- WorkID del usuario que subió el archivo
         )
     ''')
 
-    # Cerrar el cursor para liberar recursos
+    # Confirmar cambios y cerrar el cursor
+    conn.commit()
     cursor.close()

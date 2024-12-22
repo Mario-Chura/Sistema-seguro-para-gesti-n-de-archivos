@@ -8,3 +8,6 @@ MarkupSafe==2.1.5
 SQLAlchemy==2.0.29
 typing_extensions==4.11.0
 Werkzeug==3.0.2
+Flask-Mail==0.10.0
+python-dotenv==1.0.1
+

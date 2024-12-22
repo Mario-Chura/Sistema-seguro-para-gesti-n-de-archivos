@@ -1,12 +1,58 @@
 # Importaciones necesarias
+import os
 import sqlite3
 from flask import Flask, render_template, redirect, request, make_response, url_for, flash, send_file, session
+from flask_mail import Mail, Message
 from io import BytesIO
 from werkzeug.utils import secure_filename
 import hashlib
 import logging
+from dotenv import load_dotenv
 from setup import start_db
 from check import generate_token, check_token
+import random
+
+# Cargar variables de entorno
+load_dotenv()
+
+# Inicialización de la aplicación Flask
+app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
+
+# Configuración de la carpeta de subida y tipos de archivos permitidos
+UPLOAD_FOLDER = '/home/poisoniv/Code/COP4521/Project1/files'
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+#___________________________________________________________________________________
+
+# Imprimir las variables para verificar que se cargaron correctamente
+print("MAIL_USERNAME:", os.getenv('MAIL_USERNAME'))
+print("MAIL_PASSWORD:", os.getenv('MAIL_PASSWORD'))
+
+# Configuración de Flask-Mail
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')  # Desde variables de entorno
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')  # Desde variables de entorno
+
+mail = Mail(app)
+
+@app.route('/test_mail')
+def test_mail():
+    try:
+        msg = Message(
+            subject="Prueba de Flask-Mail",
+            sender=os.getenv('MAIL_USERNAME'),
+            recipients=["correo_destino@gmail.com"],  # Cambia por un correo válido
+            body="Este es un mensaje de prueba enviado desde Flask."
+        )
+        mail.send(msg)
+        return "Correo enviado con éxito."
+    except Exception as e:
+        return f"Error al enviar el correo: {e}"
 
 
 #___________________________________________________________________________________
@@ -29,15 +75,70 @@ def log_action(action, username):
 
 
 #__________________________________________________________________________________
+import random
 
-# Configuración de la carpeta de subida y tipos de archivos permitidos
-UPLOAD_FOLDER = '/home/poisoniv/Code/COP4521/Project1/files'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+def generate_verification_code():
+    """
+    Genera un código de verificación aleatorio de 6 dígitos.
+    """
+    return str(random.randint(100000, 999999))
 
-# Inicialización de la aplicación Flask
-app = Flask(__name__)
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+@app.route('/send_verification', methods=['POST', 'GET'])
+def send_verification():
+    session_token = request.cookies.get('AuthToken')
+    if not check_token(session_token, user[0]):
+        return "Acceso denegado", 403
+
+    con = sqlite3.connect('database.db')
+    try:
+        cur = con.cursor()
+        cur.execute("SELECT Email FROM Users WHERE WORKID = ?", (user[0],))
+        user_email = cur.fetchone()[0]
+
+        # Generar y guardar el código de verificación
+        verification_code = generate_verification_code()
+        session['verification_code'] = verification_code
+
+        # Enviar el correo con el código de verificación
+        msg = Message('Código de Verificación', sender=os.getenv('MAIL_USERNAME'), recipients=[user_email])
+        msg.body = f'Tu código de verificación es: {verification_code}'
+        mail.send(msg)  # Esta línea envía el correo
+
+        return render_template('Verification.html', message="Hemos enviado un código a tu correo.")
+    except Exception as e:
+        logging.error(f"Error al enviar el código de verificación: {e}")
+        return f"Error al enviar el correo: {e}", 500
+    finally:
+        con.close()
+
+
+
+@app.route('/verify_code', methods=['POST'])
+def verify_code():
+    user_code = request.form['verification_code']
+    stored_code = session.get('verification_code')  # Código almacenado en la sesión
+
+    if user_code == stored_code:
+        # Código válido, redirigir al usuario según su rol
+        if user[0][0] == 'A':
+            return redirect('/AdminMainPage')
+        elif user[0][0] == 'M':
+            return redirect('/ManagerMainPage')
+        elif user[0][0] == 'U':
+            return redirect('/UserMainPage')
+    else:
+        # Código inválido
+        return "Código de verificación incorrecto", 403
+
+
+#__________________________________________________________________________________
+
+
+
+
+
+
 
 # Configuración del sistema de logging
 logging.basicConfig(level=logging.DEBUG)
@@ -70,21 +171,15 @@ def login():
                 log_action("Intento de inicio de sesión fallido", WorkID)
                 return render_template("NoMatchingUser.html")
 
-            # Genera token de autenticación
+            # Genera token de autenticación y guarda el ID del usuario en sesión
             token = generate_token(WorkID)
             user[0] = rows[0][0]
 
             # Registra inicio de sesión exitoso
             log_action("Inicio de sesión exitoso", WorkID)
 
-            # Redirecciona según el tipo de usuario
-            if WorkID[0] == 'A':
-                response = make_response(redirect("/AdminMainPage"))
-            elif WorkID[0] == 'M':
-                response = make_response(redirect("/ManagerMainPage"))
-            elif WorkID[0] == 'U':
-                response = make_response(redirect("/UserMainPage"))
-
+            # Redirige a la verificación de token
+            response = make_response(redirect("/send_verification"))
             response.set_cookie('AuthToken', token)
             return response
 
@@ -97,60 +192,61 @@ def login():
         finally:
             con.close()
 
+
 # Ruta para el formulario de registro
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
     return render_template('SignUp.html')
 
 # Ruta para validar y procesar el registro de nuevos usuarios
-@app.route('/signupvalid', methods=['POST', 'GET'])
+@app.route('/signupvalid', methods=['POST'])
 def signupvalid():
     if request.method == 'POST':
         con = sqlite3.connect('database.db')
         try:
-            # Obtención de datos del formulario
+            # Obtener datos del formulario
             firstName = request.form['First']
             lastName = request.form['Last']
             WorkID = request.form['WorkID']
+            email = request.form['Email']  # Nuevo correo
             password = request.form['Password']
             confirm_pass = request.form['ConfirmPassword']
-            
-            # Determina el rol basado en la primera letra del WorkID
+
             if WorkID[0] == 'A':
                 role = 'Admin'
             elif WorkID[0] == 'M':
                 role = 'Manager'
             else:
                 role = 'User'
-            user[0] = WorkID
 
-            # Hash de la contraseña para almacenamiento seguro
+            # Validar contraseñas
+            if password != confirm_pass:
+                return "Las contraseñas no coinciden", 400
+
+            # Hash de la contraseña
             hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
             with con:
                 cur = con.cursor()
 
-                # Verifica si el WorkID es válido
-                if not cur.execute("SELECT * FROM ValidWorkID WHERE WORKID = ?", (WorkID,)).fetchall():
-                    return render_template('InvalidWorkID.html')
+                # Verificar si el WorkID ya existe
+                cur.execute("SELECT * FROM Users WHERE WORKID = ?", (WorkID,))
+                if cur.fetchone():
+                    return "El WorkID ya está registrado", 400
 
-                # Verifica si el WorkID ya existe
-                if cur.execute("SELECT * FROM Users WHERE WORKID = ?", (WorkID,)).fetchone():
-                    return render_template('InvalidWorkID.html')
+                # Insertar usuario en la base de datos
+                cur.execute('''
+                INSERT INTO Users (WORKID, Password, First, Last, Email, Role)
+                VALUES (?, ?, ?, ?, ?, ?)
+                ''', (WorkID, hashed_password, firstName, lastName, email, role))
 
-                # Si las contraseñas coinciden, inserta el usuario
-                if password == confirm_pass:
-                    cur.execute("INSERT INTO Users (WORKID, Password, First, Last) VALUES (?,?,?,?)", (
-                        WorkID, hashed_password, firstName, lastName))
-                    cur.execute(
-                        "UPDATE Users SET Role = ? WHERE WORKID = ?", (role, WorkID))
+                con.commit()
 
-                return redirect("/")
-
+            return redirect("/")
         except Exception as e:
-            logging.error(f"Error: {e}")
+            logging.error(f"Error durante el registro: {e}")
             con.rollback()
-            return render_template('Error.html')
+            return "Error durante el registro", 500
         finally:
             con.close()
 

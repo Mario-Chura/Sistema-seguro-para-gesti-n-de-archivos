@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificación de Código</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<style>
+    /* Estilo general */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #4a90e2, #56ccf2);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+/* Contenedor principal */
+.verification-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.verification-container {
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+}
+
+/* Título */
+.verification-container h1 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    color: #4a90e2;
+}
+
+/* Párrafo */
+.verification-container p {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Grupo de entrada */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 0.9em;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+/* Botón */
+.verification-btn {
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    width: 100%;
+}
+
+.verification-btn:hover {
+    background-color: #3b78c2;
+}
+
+</style>
+<body>
+    <div class="verification-wrapper">
+        <div class="verification-container">
+            <h1>Verificación de Código</h1>
+            <p>Por favor, introduce el código de verificación que hemos enviado a tu correo.</p>
+            <form method="POST" action="/verify_code">
+                <div class="input-group">
+                    <label for="verification_code">Código de Verificación:</label>
+                    <input type="text" id="verification_code" name="verification_code" placeholder="Ingresa tu código" required>
+                </div>
+                <button type="submit" class="verification-btn">Verificar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

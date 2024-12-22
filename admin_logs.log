@@ -211,3 +211,179 @@
 2024-12-22 05:04:51,476 - INFO - 127.0.0.1 - - [22/Dec/2024 05:04:51] "GET /AdminMainPage HTTP/1.1" 200 -
 2024-12-22 05:04:51,513 - INFO - 127.0.0.1 - - [22/Dec/2024 05:04:51] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
 2024-12-22 05:04:51,513 - INFO - 127.0.0.1 - - [22/Dec/2024 05:04:51] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 05:53:12,451 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-22 05:53:12,451 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-22 05:53:12,458 - INFO -  * Restarting with stat
+2024-12-22 05:53:12,950 - WARNING -  * Debugger is active!
+2024-12-22 05:53:12,958 - INFO -  * Debugger PIN: 668-166-703
+2024-12-22 05:53:19,325 - INFO - 127.0.0.1 - - [22/Dec/2024 05:53:19] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-22 05:53:19,517 - INFO - 127.0.0.1 - - [22/Dec/2024 05:53:19] "[36mGET /static/InvalidWorkID.css HTTP/1.1[0m" 304 -
+2024-12-22 05:53:19,518 - INFO - 127.0.0.1 - - [22/Dec/2024 05:53:19] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 05:53:19,572 - INFO - 127.0.0.1 - - [22/Dec/2024 05:53:19] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+2024-12-22 05:53:22,523 - INFO - 127.0.0.1 - - [22/Dec/2024 05:53:22] "GET /signup HTTP/1.1" 200 -
+2024-12-22 05:53:22,556 - INFO - 127.0.0.1 - - [22/Dec/2024 05:53:22] "[36mGET /static/SignUp.css HTTP/1.1[0m" 304 -
+2024-12-22 05:53:22,563 - INFO - 127.0.0.1 - - [22/Dec/2024 05:53:22] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 05:54:09,242 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:09] "[32mPOST /signupvalid HTTP/1.1[0m" 302 -
+2024-12-22 05:54:09,271 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:09] "GET / HTTP/1.1" 200 -
+2024-12-22 05:54:09,312 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:09] "[36mGET /static/Login.css HTTP/1.1[0m" 304 -
+2024-12-22 05:54:09,313 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:09] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 05:54:18,314 - INFO - Usuario: A56789 - Acción: Inicio de sesión exitoso
+2024-12-22 05:54:18,314 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:18] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-22 05:54:18,348 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:18] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-22 05:54:18,376 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:18] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-22 05:54:18,377 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:18] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 05:54:25,230 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:25] "GET /EditWorkID HTTP/1.1" 200 -
+2024-12-22 05:54:25,260 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:25] "[36mGET /static/EditWorkID.css HTTP/1.1[0m" 304 -
+2024-12-22 05:54:25,268 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:25] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 05:54:26,781 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:26] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-22 05:54:26,813 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:26] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-22 05:54:26,820 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:26] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 05:54:28,133 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:28] "GET /DeleteUser HTTP/1.1" 200 -
+2024-12-22 05:54:28,164 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:28] "[36mGET /static/DeleteUser.css HTTP/1.1[0m" 304 -
+2024-12-22 05:54:28,170 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:28] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 05:54:30,641 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:30] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-22 05:54:30,672 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:30] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-22 05:54:30,680 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:30] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 05:54:33,183 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:33] "GET / HTTP/1.1" 200 -
+2024-12-22 05:54:33,218 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:33] "[36mGET /static/Login.css HTTP/1.1[0m" 304 -
+2024-12-22 05:54:33,224 - INFO - 127.0.0.1 - - [22/Dec/2024 05:54:33] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 09:43:51,259 - INFO - Usuario: A56789 - Acción: Inicio de sesión exitoso
+2024-12-22 09:43:51,260 - INFO - 127.0.0.1 - - [22/Dec/2024 09:43:51] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-22 09:43:51,278 - INFO - 127.0.0.1 - - [22/Dec/2024 09:43:51] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-22 09:43:51,305 - INFO - 127.0.0.1 - - [22/Dec/2024 09:43:51] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-22 09:43:51,308 - INFO - 127.0.0.1 - - [22/Dec/2024 09:43:51] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 09:45:52,614 - INFO -  * Detected change in 'C:\\Users\\Franco\\Downloads\\Sistema-seguro-para-gestion-de-archivos\\main.py', reloading
+2024-12-22 09:45:52,689 - INFO -  * Restarting with stat
+2024-12-22 09:45:53,565 - WARNING -  * Debugger is active!
+2024-12-22 09:45:53,569 - INFO -  * Debugger PIN: 668-166-703
+2024-12-22 09:46:04,059 - INFO - Usuario: A56789 - Acción: Inicio de sesión exitoso
+2024-12-22 09:46:04,059 - INFO - 127.0.0.1 - - [22/Dec/2024 09:46:04] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-22 09:46:04,068 - INFO - 127.0.0.1 - - [22/Dec/2024 09:46:04] "[31m[1mGET /send_verification HTTP/1.1[0m" 405 -
+2024-12-22 09:48:28,650 - INFO -  * Detected change in 'C:\\Users\\Franco\\Downloads\\Sistema-seguro-para-gestion-de-archivos\\main.py', reloading
+2024-12-22 09:48:28,699 - INFO -  * Restarting with stat
+2024-12-22 09:48:29,493 - WARNING -  * Debugger is active!
+2024-12-22 09:48:29,501 - INFO -  * Debugger PIN: 668-166-703
+2024-12-22 09:48:37,492 - INFO - Usuario: A56789 - Acción: Inicio de sesión exitoso
+2024-12-22 09:48:37,493 - INFO - 127.0.0.1 - - [22/Dec/2024 09:48:37] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-22 09:48:37,503 - INFO - 127.0.0.1 - - [22/Dec/2024 09:48:37] "GET /send_verification HTTP/1.1" 200 -
+2024-12-22 10:05:31,035 - INFO -  * Detected change in 'C:\\Users\\Franco\\Downloads\\Sistema-seguro-para-gestion-de-archivos\\main.py', reloading
+2024-12-22 10:05:31,082 - INFO -  * Restarting with stat
+2024-12-22 10:05:31,519 - WARNING -  * Debugger is active!
+2024-12-22 10:05:31,526 - INFO -  * Debugger PIN: 668-166-703
+2024-12-22 10:05:42,823 - INFO - Usuario: A56789 - Acción: Inicio de sesión exitoso
+2024-12-22 10:05:42,823 - INFO - 127.0.0.1 - - [22/Dec/2024 10:05:42] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-22 10:05:42,829 - ERROR - Error al enviar el código de verificación: name 'generate_verification_code' is not defined
+2024-12-22 10:05:42,830 - INFO - 127.0.0.1 - - [22/Dec/2024 10:05:42] "[35m[1mGET /send_verification HTTP/1.1[0m" 500 -
+2024-12-22 10:07:02,320 - INFO -  * Detected change in 'C:\\Users\\Franco\\Downloads\\Sistema-seguro-para-gestion-de-archivos\\main.py', reloading
+2024-12-22 10:07:02,355 - INFO -  * Restarting with stat
+2024-12-22 10:07:02,756 - WARNING -  * Debugger is active!
+2024-12-22 10:07:02,762 - INFO -  * Debugger PIN: 668-166-703
+2024-12-22 10:07:35,611 - INFO - Usuario: A56789 - Acción: Inicio de sesión exitoso
+2024-12-22 10:07:35,611 - INFO - 127.0.0.1 - - [22/Dec/2024 10:07:35] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-22 10:07:37,716 - ERROR - Error al enviar el código de verificación: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-72aad8360fbsm6246014b3a.75 - gsmtp')
+2024-12-22 10:07:37,718 - INFO - 127.0.0.1 - - [22/Dec/2024 10:07:37] "[35m[1mGET /send_verification HTTP/1.1[0m" 500 -
+2024-12-22 10:08:52,121 - INFO - Usuario: A56789 - Acción: Inicio de sesión exitoso
+2024-12-22 10:08:52,121 - INFO - 127.0.0.1 - - [22/Dec/2024 10:08:52] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-22 10:08:53,887 - ERROR - Error al enviar el código de verificación: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-219dc9f4406sm58087825ad.170 - gsmtp')
+2024-12-22 10:08:53,889 - INFO - 127.0.0.1 - - [22/Dec/2024 10:08:53] "[35m[1mGET /send_verification HTTP/1.1[0m" 500 -
+2024-12-22 10:09:29,333 - INFO - Usuario: A56789 - Acción: Inicio de sesión exitoso
+2024-12-22 10:09:29,333 - INFO - 127.0.0.1 - - [22/Dec/2024 10:09:29] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-22 10:09:31,313 - ERROR - Error al enviar el código de verificación: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 98e67ed59e1d1-2f447798ab6sm6689799a91.4 - gsmtp')
+2024-12-22 10:09:31,314 - INFO - 127.0.0.1 - - [22/Dec/2024 10:09:31] "[35m[1mGET /send_verification HTTP/1.1[0m" 500 -
+2024-12-22 10:13:38,299 - INFO -  * Detected change in 'C:\\Users\\Franco\\Downloads\\Sistema-seguro-para-gestion-de-archivos\\main.py', reloading
+2024-12-22 10:13:38,337 - INFO -  * Restarting with stat
+2024-12-22 10:13:38,758 - WARNING -  * Debugger is active!
+2024-12-22 10:13:38,765 - INFO -  * Debugger PIN: 668-166-703
+2024-12-22 10:13:39,801 - INFO -  * Detected change in 'C:\\Users\\Franco\\Downloads\\Sistema-seguro-para-gestion-de-archivos\\main.py', reloading
+2024-12-22 10:13:39,841 - INFO -  * Restarting with stat
+2024-12-22 10:13:40,232 - WARNING -  * Debugger is active!
+2024-12-22 10:13:40,239 - INFO -  * Debugger PIN: 668-166-703
+2024-12-22 10:13:46,555 - INFO - Usuario: A56789 - Acción: Inicio de sesión exitoso
+2024-12-22 10:13:46,556 - INFO - 127.0.0.1 - - [22/Dec/2024 10:13:46] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-22 10:13:48,428 - ERROR - Error al enviar el código de verificación: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-72aad8310d0sm6225610b3a.42 - gsmtp')
+2024-12-22 10:13:48,431 - INFO - 127.0.0.1 - - [22/Dec/2024 10:13:48] "[35m[1mGET /send_verification HTTP/1.1[0m" 500 -
+2024-12-22 10:15:44,260 - INFO -  * Detected change in 'C:\\Users\\Franco\\Downloads\\Sistema-seguro-para-gestion-de-archivos\\main.py', reloading
+2024-12-22 10:15:44,310 - INFO -  * Restarting with stat
+2024-12-22 10:15:44,723 - WARNING -  * Debugger is active!
+2024-12-22 10:15:44,730 - INFO -  * Debugger PIN: 668-166-703
+2024-12-22 10:15:49,904 - INFO - 127.0.0.1 - - [22/Dec/2024 10:15:49] "[31m[1mGET /send_verification HTTP/1.1[0m" 403 -
+2024-12-22 10:15:57,009 - INFO - 127.0.0.1 - - [22/Dec/2024 10:15:57] "GET /test_mail HTTP/1.1" 200 -
+2024-12-22 10:20:58,712 - INFO - Usuario: A56789 - Acción: Inicio de sesión exitoso
+2024-12-22 10:20:58,713 - INFO - 127.0.0.1 - - [22/Dec/2024 10:20:58] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-22 10:21:00,576 - ERROR - Error al enviar el código de verificación: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-219dc9f726bsm58172835ad.220 - gsmtp')
+2024-12-22 10:21:00,576 - INFO - 127.0.0.1 - - [22/Dec/2024 10:21:00] "[35m[1mGET /send_verification HTTP/1.1[0m" 500 -
+2024-12-22 10:41:44,023 - INFO - Usuario: A56789 - Acción: Inicio de sesión exitoso
+2024-12-22 10:41:44,024 - INFO - 127.0.0.1 - - [22/Dec/2024 10:41:44] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-22 10:41:46,695 - ERROR - Error al enviar el código de verificación: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-72aad815804sm6285043b3a.32 - gsmtp')
+2024-12-22 10:41:46,696 - INFO - 127.0.0.1 - - [22/Dec/2024 10:41:46] "[35m[1mGET /send_verification HTTP/1.1[0m" 500 -
+2024-12-22 10:42:12,203 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-22 10:42:12,203 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-22 10:42:12,207 - INFO -  * Restarting with stat
+2024-12-22 10:42:12,592 - WARNING -  * Debugger is active!
+2024-12-22 10:42:12,598 - INFO -  * Debugger PIN: 668-166-703
+2024-12-22 10:42:25,890 - INFO - 127.0.0.1 - - [22/Dec/2024 10:42:25] "GET / HTTP/1.1" 200 -
+2024-12-22 10:42:26,056 - INFO - 127.0.0.1 - - [22/Dec/2024 10:42:26] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 10:42:26,057 - INFO - 127.0.0.1 - - [22/Dec/2024 10:42:26] "[36mGET /static/Login.css HTTP/1.1[0m" 304 -
+2024-12-22 10:42:41,799 - INFO - Usuario: A56789 - Acción: Inicio de sesión exitoso
+2024-12-22 10:42:41,800 - INFO - 127.0.0.1 - - [22/Dec/2024 10:42:41] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-22 10:42:45,884 - INFO - 127.0.0.1 - - [22/Dec/2024 10:42:45] "GET /send_verification HTTP/1.1" 200 -
+2024-12-22 10:43:08,215 - INFO - 127.0.0.1 - - [22/Dec/2024 10:43:08] "[32mPOST /verify_code HTTP/1.1[0m" 302 -
+2024-12-22 10:43:08,224 - INFO - 127.0.0.1 - - [22/Dec/2024 10:43:08] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-22 10:43:08,248 - INFO - 127.0.0.1 - - [22/Dec/2024 10:43:08] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-22 10:43:08,249 - INFO - 127.0.0.1 - - [22/Dec/2024 10:43:08] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 10:43:29,006 - INFO - 127.0.0.1 - - [22/Dec/2024 10:43:29] "GET / HTTP/1.1" 200 -
+2024-12-22 10:43:29,039 - INFO - 127.0.0.1 - - [22/Dec/2024 10:43:29] "[36mGET /static/Login.css HTTP/1.1[0m" 304 -
+2024-12-22 10:43:29,040 - INFO - 127.0.0.1 - - [22/Dec/2024 10:43:29] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 10:45:20,379 - INFO - Usuario: A56789 - Acción: Inicio de sesión exitoso
+2024-12-22 10:45:20,380 - INFO - 127.0.0.1 - - [22/Dec/2024 10:45:20] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-22 10:45:23,826 - INFO - 127.0.0.1 - - [22/Dec/2024 10:45:23] "GET /send_verification HTTP/1.1" 200 -
+2024-12-22 10:45:23,877 - INFO - 127.0.0.1 - - [22/Dec/2024 10:45:23] "[33mGET /static/styles.css HTTP/1.1[0m" 404 -
+2024-12-22 10:45:36,664 - INFO - 127.0.0.1 - - [22/Dec/2024 10:45:36] "[32mPOST /verify_code HTTP/1.1[0m" 302 -
+2024-12-22 10:45:36,674 - INFO - 127.0.0.1 - - [22/Dec/2024 10:45:36] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-22 10:45:36,700 - INFO - 127.0.0.1 - - [22/Dec/2024 10:45:36] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-22 10:45:36,701 - INFO - 127.0.0.1 - - [22/Dec/2024 10:45:36] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 10:45:41,160 - INFO - 127.0.0.1 - - [22/Dec/2024 10:45:41] "GET / HTTP/1.1" 200 -
+2024-12-22 10:45:41,187 - INFO - 127.0.0.1 - - [22/Dec/2024 10:45:41] "[36mGET /static/Login.css HTTP/1.1[0m" 304 -
+2024-12-22 10:45:41,188 - INFO - 127.0.0.1 - - [22/Dec/2024 10:45:41] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 10:46:39,186 - INFO - 127.0.0.1 - - [22/Dec/2024 10:46:39] "GET /signup HTTP/1.1" 200 -
+2024-12-22 10:46:39,263 - INFO - 127.0.0.1 - - [22/Dec/2024 10:46:39] "[36mGET /static/SignUp.css HTTP/1.1[0m" 304 -
+2024-12-22 10:46:39,264 - INFO - 127.0.0.1 - - [22/Dec/2024 10:46:39] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 10:47:07,901 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:07] "[32mPOST /signupvalid HTTP/1.1[0m" 302 -
+2024-12-22 10:47:07,907 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:07] "GET / HTTP/1.1" 200 -
+2024-12-22 10:47:07,925 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:07] "[36mGET /static/Login.css HTTP/1.1[0m" 304 -
+2024-12-22 10:47:07,925 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:07] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 10:47:20,634 - INFO - Usuario: M65432 - Acción: Inicio de sesión exitoso
+2024-12-22 10:47:20,634 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:20] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-22 10:47:23,807 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:23] "GET /send_verification HTTP/1.1" 200 -
+2024-12-22 10:47:23,858 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:23] "[33mGET /static/styles.css HTTP/1.1[0m" 404 -
+2024-12-22 10:47:36,178 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:36] "[32mPOST /verify_code HTTP/1.1[0m" 302 -
+2024-12-22 10:47:36,203 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:36] "GET /ManagerMainPage HTTP/1.1" 200 -
+2024-12-22 10:47:36,235 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:36] "[36mGET /static/ManagerMainPage.css HTTP/1.1[0m" 304 -
+2024-12-22 10:47:36,236 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:36] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 10:47:39,033 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:39] "GET /uploadfile HTTP/1.1" 200 -
+2024-12-22 10:47:39,060 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:39] "[36mGET /static/UploadFile.css HTTP/1.1[0m" 304 -
+2024-12-22 10:47:39,062 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:39] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 10:47:43,252 - INFO - Usuario: M65432 - Acción: Subió el archivo: prueba1_-_copia.txt
+2024-12-22 10:47:43,253 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:43] "[32mPOST /uploadfile HTTP/1.1[0m" 302 -
+2024-12-22 10:47:43,263 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:43] "GET /ManagerMainPage HTTP/1.1" 200 -
+2024-12-22 10:47:43,297 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:43] "[36mGET /static/ManagerMainPage.css HTTP/1.1[0m" 304 -
+2024-12-22 10:47:43,298 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:43] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 10:47:45,184 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:45] "GET / HTTP/1.1" 200 -
+2024-12-22 10:47:45,206 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:45] "[36mGET /static/Login.css HTTP/1.1[0m" 304 -
+2024-12-22 10:47:45,214 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:45] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 10:47:56,381 - INFO - Usuario: A56789 - Acción: Inicio de sesión exitoso
+2024-12-22 10:47:56,382 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:56] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-22 10:47:59,395 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:59] "GET /send_verification HTTP/1.1" 200 -
+2024-12-22 10:47:59,447 - INFO - 127.0.0.1 - - [22/Dec/2024 10:47:59] "[33mGET /static/styles.css HTTP/1.1[0m" 404 -
+2024-12-22 10:48:08,526 - INFO - 127.0.0.1 - - [22/Dec/2024 10:48:08] "[32mPOST /verify_code HTTP/1.1[0m" 302 -
+2024-12-22 10:48:08,538 - INFO - 127.0.0.1 - - [22/Dec/2024 10:48:08] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-22 10:48:08,559 - INFO - 127.0.0.1 - - [22/Dec/2024 10:48:08] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-22 10:48:08,566 - INFO - 127.0.0.1 - - [22/Dec/2024 10:48:08] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 10:48:11,098 - INFO - Usuario: A56789 - Acción: Eliminó el archivo: prueba1_-_copia.txt
+2024-12-22 10:48:11,099 - INFO - 127.0.0.1 - - [22/Dec/2024 10:48:11] "[32mGET /deletefile/1 HTTP/1.1[0m" 302 -
+2024-12-22 10:48:11,106 - INFO - 127.0.0.1 - - [22/Dec/2024 10:48:11] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-22 10:48:11,127 - INFO - 127.0.0.1 - - [22/Dec/2024 10:48:11] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-22 10:48:11,133 - INFO - 127.0.0.1 - - [22/Dec/2024 10:48:11] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-22 10:48:12,723 - INFO - 127.0.0.1 - - [22/Dec/2024 10:48:12] "GET /admin/view_logs HTTP/1.1" 200 -
