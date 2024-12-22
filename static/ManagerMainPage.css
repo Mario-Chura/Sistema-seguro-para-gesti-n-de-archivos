@@ -1,0 +1,120 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+	background: linear-gradient(135deg, #438cc7, #0e3785);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	color: white;
+}
+
+.container {
+	width: 90%;
+	max-width: 1200px;
+	background: white;
+	border-radius: 12px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	padding: 20px;
+	overflow: hidden;
+}
+
+.logo img {
+	width: 100px;
+	margin: 20px auto;
+	display: block;
+}
+
+.search-bar {
+	margin: 20px auto;
+	text-align: center;
+}
+
+.search-bar form {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+
+.search-bar input {
+	width: 300px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 14px;
+}
+
+.search-bar button {
+	background-color: #1e4d83;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+	background-color: #2B7A78;
+}
+
+.buttons {
+	display: flex;
+	justify-content: space-between;
+	margin: 20px 0;
+}
+
+.buttons a button {
+	background-color: #1e4d83;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.buttons a button:hover {
+	background-color: #2B7A78;
+}
+
+.files-section {
+	margin-top: 30px;
+}
+
+.file-container {
+	background: #f9f9f9;
+	border-radius: 8px;
+	padding: 15px;
+	margin-bottom: 20px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.file-container h1 {
+	font-size: 18px;
+	color: #17252A;
+	margin-bottom: 10px;
+}
+
+.file-container .buttons {
+	display: flex;
+	gap: 10px;
+}
+
+.file-container .buttons a button {
+	background-color: #1e4d83;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 20px;
+	font-size: 14px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.file-container .buttons a button:hover {
+	background-color: #2B7A78;
+}

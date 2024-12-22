@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página Principal del Gestor</title>
+    <link rel="stylesheet" href="/static/ManagerMainPage.css">
+    <link rel="icon" href="/static/favicon.png" type="image/x-icon" />
+</head>
+
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="/static/logo.png" alt="Logo">
+        </div>
+
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+            <form method="POST" action="/search">
+                <input type="text" placeholder="Buscar..." name="searched" required>
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
+
+        <!-- Botones de navegación -->
+        <div class="buttons">
+            <a href="/uploadfile"><button type="button">Subir Archivo</button></a>
+            <a href="/ManagerMainPage"><button type="button">Inicio</button></a>
+            <a href="/"><button type="button">Cerrar Sesión</button></a>
+        </div>
+
+        <!-- Sección de archivos -->
+        <div class="files-section">
+            {% for file in Files %}
+            <div class="file-container">
+                <h1>{{ file[1] }}</h1>
+                <div class="buttons">
+                    <a href="{{ url_for('downloadfile', file_id=file[0]) }}"><button type="button">Descargar</button></a>
+                    <a href="{{ url_for('deletefile', file_id=file[0]) }}"><button type="button">Eliminar</button></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administrar WorkIDs</title>
+    <link rel="stylesheet" href="/static/EditWorkID.css" />
+    <link rel="icon" href="/static/favicon.png" type="image/x-icon" />
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="/static/logo.png" alt="Logo">
+        </div>
+
+        <!-- Botones de navegación -->
+        <div class="buttons">
+            <a href="/AdminMainPage"><button type="button">Inicio</button></a>
+            <a href="/"><button type="button">Cerrar Sesión</button></a>
+        </div>
+
+        <!-- Título -->
+        <div class="title-box">
+            <h1>Administrar WorkIDs</h1>
+        </div>
+
+        <!-- Formulario para agregar/eliminar WorkID -->
+        <div class="form-section">
+            <form method="POST">
+                <input name="work_id" placeholder="Ingrese WorkID" required>
+                <select name="action">
+                    <option value="add">Agregar</option>
+                    <option value="delete">Eliminar</option>
+                </select>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+
+        <!-- Lista de WorkIDs existentes -->
+        <div class="workids-section">
+            <h2>WorkIDs Registrados:</h2>
+            <div class="workids-list">
+                {% for work_id in work_ids %}
+                <p>{{ work_id }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

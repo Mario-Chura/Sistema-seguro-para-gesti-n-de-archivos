@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Usuario</title>
+    <link rel="stylesheet" href="/static/DeleteUser.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="/static/logo.png" alt="Logo">
+        </div>
+
+        <!-- Botones de navegación -->
+        <div class="buttons">
+            <a href="/AdminMainPage"><button type="button">Inicio</button></a>
+            <a href="/"><button type="button">Cerrar Sesión</button></a>
+        </div>
+
+        <!-- Título -->
+        <div class="title-box">
+            <h1>Eliminar Usuario</h1>
+        </div>
+
+        <!-- Formulario para eliminar usuario -->
+        <div class="form-section">
+            <form method="POST">
+                <label for="work_id">Seleccione un usuario para eliminar:</label>
+                <select name="work_id" id="work_id" required>
+                    {% for user in users %}
+                    <option value="{{ user[0] }}">{{ user[1] }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Eliminar</button>
+            </form>
+        </div>
+
+        <!-- Lista de usuarios -->
+        <div class="users-section">
+            <h2>Usuarios Registrados:</h2>
+            <div class="users-list">
+                {% for user in users %}
+                <p>{{ user[1] }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
