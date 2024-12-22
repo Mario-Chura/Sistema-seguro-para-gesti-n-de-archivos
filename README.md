@@ -4,7 +4,7 @@
 
 - Clone the repository:
 ```bash
-git clone IskaIV/Secure-Document-Management-System
+git clone https://github.com/Mario-Chura/Sistema-seguro-para-gestion-de-archivos.git
 ```
 
 - Create Python virtual enviroment
