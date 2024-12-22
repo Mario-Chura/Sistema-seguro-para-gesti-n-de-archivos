@@ -1,34 +1,34 @@
 # Sistema seguro para gestión de archivos
 
-## Installation:
+## Instalación y Uso:
 
-- Clone the repository:
+- Clonar el repositorio:
 ```bash
 git clone https://github.com/Mario-Chura/Sistema-seguro-para-gestion-de-archivos.git
 ```
 
-- Create Python virtual enviroment
+- Crear un entorno virtual de Python:
 ```bash
 python -m venv .venv/
 ```
 
-- Activate the  virtual enviroment
+- Activar el entorno virtual:
 ```bash
-. .venv/bin/activate
+.\.venv\Scripts\activate
 ```
 
-- Install dependencies:
+- Instalar las dependencias:
 ```bash
 pip install -r requirements.txt
 ```
 
-- Run the program
+- Ejecutar el programa:
 ```bash
 python ./main.py
 ```
 
 ## Usage:
-- Access the application in your web browser at http://localhost:port (port number may vary depending on your configuration).
-- Register as a new user or log in with existing credentials.
-- Explore the various features of the application, such as document upload, search, file management, and role based access control.
+- Accede a la aplicación en tu navegador web en http://localhost:puerto 
+- Regístrate como un nuevo usuario o inicia sesión con credenciales existentes.
+- Explora las diversas funciones de la aplicación
 
