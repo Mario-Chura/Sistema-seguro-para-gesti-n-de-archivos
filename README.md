@@ -1,1 +1,1 @@
-# Sistema-seguro-para-gesti-n-de-archivos
+# Sistema-seguro-para-gestión-de-archivos
