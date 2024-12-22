@@ -1,25 +1,25 @@
 # Sistema seguro para gestión de archivos
 
-## Instalación:
+## Instalación y Uso:
 
-
-- Clonar el repositorio:
 ```bash
-git clone https://github.com/Mario-Chura/Sistema-seguro-para-gestion-de-archivos.git
+# Clonar el repositorio:
+git clone IskaIV/Secure-Document-Management-System
 
-- Crear un entorno virtual de Python:
-```bash
+# Crear un entorno virtual de Python:
 python -m venv .venv/
 
-- Activar el entorno virtual:
-```bash
+# Activar el entorno virtual:
 . .venv/bin/activate
 
-- Instalar las dependencias:
-```bash
+# Instalar las dependencias:
 pip install -r requirements.txt
 
-- Ejecutar el programa:
-```bash
+# Ejecutar el programa:
 python ./main.py
+
+# Uso:
+# Accede a la aplicación en tu navegador web en http://localhost:puerto (el número de puerto puede variar según tu configuración).
+# Regístrate como un nuevo usuario o inicia sesión con credenciales existentes.
+# Explora las diversas funciones de la aplicación, como la carga de documentos, búsqueda, gestión de archivos y control de acceso basado en roles.
 
