@@ -28,7 +28,7 @@ python ./main.py
 ```
 
 ## Usage:
-- Accede a la aplicación en tu navegador web en http://localhost:puerto 
+- Accede a la aplicación en tu navegador web en [http://localhost:puerto](http://127.0.0.1:5000) 
 - Regístrate como un nuevo usuario o inicia sesión con credenciales existentes.
 - Explora las diversas funciones de la aplicación
 
