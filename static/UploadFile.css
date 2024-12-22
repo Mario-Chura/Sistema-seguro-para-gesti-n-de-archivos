@@ -88,3 +88,9 @@ body {
     background-color: #2B7A78;
     transform: scale(1.05);
 }
+.buttons {
+    display: flex;
+    gap: 15px; /* Añade espacio entre los botones */
+    justify-content: flex-end; /* Alinea los botones a la derecha */
+    margin-bottom: 20px;
+}
