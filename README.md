@@ -1,25 +1,34 @@
 # Sistema seguro para gestión de archivos
 
-## Instalación y Uso:
+## Installation:
 
+- Clone the repository:
 ```bash
-# Clonar el repositorio:
 git clone IskaIV/Secure-Document-Management-System
+```
 
-# Crear un entorno virtual de Python:
+- Create Python virtual enviroment
+```bash
 python -m venv .venv/
+```
 
-# Activar el entorno virtual:
+- Activate the  virtual enviroment
+```bash
 . .venv/bin/activate
+```
 
-# Instalar las dependencias:
+- Install dependencies:
+```bash
 pip install -r requirements.txt
+```
 
-# Ejecutar el programa:
+- Run the program
+```bash
 python ./main.py
+```
 
-# Uso:
-# Accede a la aplicación en tu navegador web en http://localhost:puerto (el número de puerto puede variar según tu configuración).
-# Regístrate como un nuevo usuario o inicia sesión con credenciales existentes.
-# Explora las diversas funciones de la aplicación, como la carga de documentos, búsqueda, gestión de archivos y control de acceso basado en roles.
+## Usage:
+- Access the application in your web browser at http://localhost:port (port number may vary depending on your configuration).
+- Register as a new user or log in with existing credentials.
+- Explore the various features of the application, such as document upload, search, file management, and role based access control.
 
