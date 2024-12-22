@@ -8,6 +8,28 @@ import logging
 from setup import start_db
 from check import generate_token, check_token
 
+
+#___________________________________________________________________________________
+
+# Configuración del sistema de logs
+logging.basicConfig(
+    filename="admin_logs.log",  # Archivo donde se guardarán los logs
+    level=logging.INFO,  # Nivel de logs
+    format="%(asctime)s - %(levelname)s - %(message)s"  # Formato del log
+)
+
+# Función para registrar acciones
+def log_action(action, username):
+    """
+    Registra una acción realizada por un usuario.
+    """
+    logging.info(f"Usuario: {username} - Acción: {action}")
+
+
+
+
+#__________________________________________________________________________________
+
 # Configuración de la carpeta de subida y tipos de archivos permitidos
 UPLOAD_FOLDER = '/home/poisoniv/Code/COP4521/Project1/files'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
@@ -42,27 +64,28 @@ def login():
             cur = con.cursor()
 
             # Busca el usuario en la base de datos
-            cur.execute("SELECT * FROM Users WHERE WORKID = ? AND Password = ?",
-                        (WorkID, hashed_password))
+            cur.execute("SELECT * FROM Users WHERE WORKID = ? AND Password = ?", (WorkID, hashed_password))
             rows = cur.fetchall()
             if len(rows) == 0:
+                log_action("Intento de inicio de sesión fallido", WorkID)
                 return render_template("NoMatchingUser.html")
 
             # Genera token de autenticación
             token = generate_token(WorkID)
             user[0] = rows[0][0]
 
-            # Redirecciona según el tipo de usuario (Admin, Manager, User)
+            # Registra inicio de sesión exitoso
+            log_action("Inicio de sesión exitoso", WorkID)
+
+            # Redirecciona según el tipo de usuario
             if WorkID[0] == 'A':
                 response = make_response(redirect("/AdminMainPage"))
-                response.set_cookie('AuthToken', token)
             elif WorkID[0] == 'M':
                 response = make_response(redirect("/ManagerMainPage"))
-                response.set_cookie('AuthToken', token)
             elif WorkID[0] == 'U':
                 response = make_response(redirect("/UserMainPage"))
-                response.set_cookie('AuthToken', token)
 
+            response.set_cookie('AuthToken', token)
             return response
 
         except sqlite3.Error as e:
@@ -71,8 +94,6 @@ def login():
         except Exception as e:
             logging.error(f"Exception Error: {e}")
             return render_template("Error.html")
-        except:
-            return redirect("/")
         finally:
             con.close()
 
@@ -193,22 +214,20 @@ def uploadfile():
         if not check_token(session_token, user[0]):
             return render_template('TokenError.html')
 
-        # Verifica que se haya enviado un archivo
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
 
         file = request.files['file']
 
-        # Verifica que se haya seleccionado un archivo
         if file.filename == '':
             flash('No selected file')
             return redirect(request.url)
 
-        # Procesa el archivo si es válido
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file_data = file.read()
+
             # Guarda el archivo en la base de datos
             conn = sqlite3.connect('database.db')
             cursor = conn.cursor()
@@ -216,6 +235,9 @@ def uploadfile():
                 "INSERT INTO Files (FileName, FileData, WorkID) VALUES (?, ?, ?)", (filename, file_data, user[0]))
             conn.commit()
             conn.close()
+
+            # Registrar en los logs
+            log_action(f"Subió el archivo: {filename}", user[0])
 
         # Redirecciona según el tipo de usuario
         if user[0][0] == 'A':
@@ -238,9 +260,18 @@ def downloadfile(file_id):
 def deletefile(file_id):
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM Files WHERE FileId=?", (file_id,))
-    conn.commit()
-    conn.close()
+    cursor.execute("SELECT FileName FROM Files WHERE FileId=?", (file_id,))
+    file = cursor.fetchone()
+    if file:
+        filename = file[0]
+        cursor.execute("DELETE FROM Files WHERE FileId=?", (file_id,))
+        conn.commit()
+        conn.close()
+
+        # Registrar en los logs
+        log_action(f"Eliminó el archivo: {filename}", user[0])
+    else:
+        conn.close()
     return redirect(request.referrer)
 
 # Ruta para editar WorkIDs válidos (función administrativa)
@@ -369,6 +400,30 @@ def searched():
             return render_template('Error.html')
         finally:
             conn.close()
+
+#________________________________________________________________________________________
+@app.route('/admin/view_logs')
+def view_logs():
+    session_token = request.cookies.get('AuthToken')
+    # Verificar si el usuario tiene permisos de administrador
+    if not check_token(session_token, user[0]) or user[0][0] != 'A':
+        return "Acceso denegado", 403
+
+    try:
+        # Leer el contenido del archivo de logs
+        with open("admin_logs.log", "r") as log_file:
+            all_logs = log_file.readlines()  # Leer todas las líneas
+
+        # Filtrar las líneas relevantes
+        filtered_logs = [line for line in all_logs if "Usuario:" in line]
+
+        # Renderizar el archivo Logs.html y pasar los logs filtrados como contexto
+        return render_template("Logs.html", logs=filtered_logs)
+    except Exception as e:
+        logging.error(f"Error al leer el archivo de logs: {e}")
+        return "No se pudo leer el archivo de logs", 500
+#________________________________________________________________________________________
+
 
 # Punto de entrada de la aplicación
 if __name__ == "__main__":

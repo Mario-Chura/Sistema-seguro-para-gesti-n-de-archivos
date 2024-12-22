@@ -32,3 +32,8 @@ def check_token(token, WorkID):
     hashed_role = int(hashlib.sha256(WorkID.encode()).hexdigest(), 16) % secret_mod
     token = int(token)  # Convierte el token recibido a un entero para la comparación
     return hashed_role == token  # Devuelve True si el token coincide, False si no
+
+
+
+
+
