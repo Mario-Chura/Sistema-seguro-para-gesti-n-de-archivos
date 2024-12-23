@@ -22,6 +22,11 @@ python -m venv .venv/
 pip install -r requirements.txt
 ```
 
+- Para generar claves criptográficas:
+```bash
+python generate_key.py
+```
+
 - Ejecutar el programa:
 ```bash
 python ./main.py
