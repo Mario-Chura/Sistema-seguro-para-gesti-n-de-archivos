@@ -11,6 +11,9 @@ from dotenv import load_dotenv
 from setup import start_db
 from check import generate_token, check_token
 import random
+# Importar Fernet para cifrado
+from cryptography.fernet import Fernet
+
 
 # Cargar variables de entorno
 load_dotenv()
@@ -19,6 +22,11 @@ load_dotenv()
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
+# Cargar la clave desde el archivo
+with open("encryption_key.key", "rb") as key_file:
+    encryption_key = key_file.read()
+
+cipher = Fernet(encryption_key)
 
 # Configuración de la carpeta de subida y tipos de archivos permitidos
 UPLOAD_FOLDER = '/home/poisoniv/Code/COP4521/Project1/files'
@@ -302,7 +310,7 @@ def AdminMain():
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-# Ruta para subir archivos
+# Ruta para subir archivos con cifrado
 @app.route('/uploadfile', methods=['POST', 'GET'])
 def uploadfile():
     if request.method == 'POST':
@@ -324,16 +332,21 @@ def uploadfile():
             filename = secure_filename(file.filename)
             file_data = file.read()
 
-            # Guarda el archivo en la base de datos
+            # Cifrar el archivo
+            encrypted_data = cipher.encrypt(file_data)
+
+            # Guarda el archivo cifrado en la base de datos
             conn = sqlite3.connect('database.db')
             cursor = conn.cursor()
             cursor.execute(
-                "INSERT INTO Files (FileName, FileData, WorkID) VALUES (?, ?, ?)", (filename, file_data, user[0]))
+                "INSERT INTO Files (FileName, FileData, WorkID) VALUES (?, ?, ?)",
+                (filename, encrypted_data, user[0])
+            )
             conn.commit()
             conn.close()
 
             # Registrar en los logs
-            log_action(f"Subió el archivo: {filename}", user[0])
+            log_action(f"Subió el archivo cifrado: {filename}", user[0])
 
         # Redirecciona según el tipo de usuario
         if user[0][0] == 'A':
@@ -342,15 +355,29 @@ def uploadfile():
             return redirect(url_for('ManagerMain'))
     return render_template('UploadFile.html')
 
-# Ruta para descargar archivos
+# Ruta para descargar archivos con descifrado
 @app.route('/download/<int:file_id>')
 def downloadfile(file_id):
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM Files WHERE FileId=?", (file_id,))
     file = cursor.fetchone()
-    return send_file(BytesIO(file[2]), download_name=file[1], as_attachment=True)
+    conn.close()
 
+    if file:
+        file_name = file[1]
+        encrypted_data = file[2]
+
+        # Descifrar los datos del archivo
+        decrypted_data = cipher.decrypt(encrypted_data)
+        # Registrar en los logs
+        log_action(f"Archivo '{file_name}' descifrado y enviado al usuario.", user[0])
+
+        return send_file(BytesIO(decrypted_data), download_name=file_name, as_attachment=True)
+    else:
+        flash("Archivo no encontrado")
+        return redirect(request.referrer)
+    
 # Ruta para eliminar archivos
 @app.route('/deletefile/<int:file_id>')
 def deletefile(file_id):
