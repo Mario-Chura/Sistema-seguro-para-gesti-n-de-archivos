@@ -50,6 +50,14 @@ def start_db():
         # Agregar la columna 'Email' si no existe
         cursor.execute("ALTER TABLE Users ADD COLUMN Email TEXT NOT NULL")
 
+    if 'FailedAttempts' not in columns:
+        # Agregar la columna 'FailedAttempts' si no existe
+        cursor.execute("ALTER TABLE Users ADD COLUMN FailedAttempts INTEGER DEFAULT 0")
+
+    if 'LockTime' not in columns:
+        # Agregar la columna 'LockTime' si no existe
+        cursor.execute("ALTER TABLE Users ADD COLUMN LockTime TEXT")
+
     # Crear la tabla 'Files' si no existe.
     # Esta tabla almacena los archivos subidos por los usuarios.
     cursor.execute('''

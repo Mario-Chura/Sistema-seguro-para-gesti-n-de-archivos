@@ -11,6 +11,8 @@ from dotenv import load_dotenv
 from setup import start_db
 from check import generate_token, check_token
 import random
+from datetime import datetime, timedelta
+
 # Importar Fernet para cifrado
 from cryptography.fernet import Fernet
 
@@ -95,13 +97,15 @@ def generate_verification_code():
 @app.route('/send_verification', methods=['POST', 'GET'])
 def send_verification():
     session_token = request.cookies.get('AuthToken')
-    if not check_token(session_token, user[0]):
+    user_id = session.get('user_id')
+
+    if not check_token(session_token, user_id):
         return "Acceso denegado", 403
 
     con = sqlite3.connect('database.db')
     try:
         cur = con.cursor()
-        cur.execute("SELECT Email FROM Users WHERE WORKID = ?", (user[0],))
+        cur.execute("SELECT Email FROM Users WHERE WORKID = ?", (user_id,))
         user_email = cur.fetchone()[0]
 
         # Generar y guardar el código de verificación
@@ -182,21 +186,58 @@ def login():
             cur = con.cursor()
 
             # Busca el usuario en la base de datos
-            cur.execute("SELECT * FROM Users WHERE WORKID = ? AND Password = ?", (WorkID, hashed_password))
-            rows = cur.fetchall()
-            if len(rows) == 0:
+            cur.execute("SELECT * FROM Users WHERE WORKID = ?", (WorkID,))
+            user = cur.fetchone()
+
+            if not user:
                 log_action("Intento de inicio de sesión fallido", WorkID)
                 return render_template("NoMatchingUser.html")
 
+            failed_attempts = user[6]  # Columna 'FailedAttempts'
+            lock_time = user[7]  # Columna 'LockTime'
+
+            # Si la cuenta está bloqueada
+            if failed_attempts >= 5:
+                # Si el bloqueo ha expirado, desbloquear la cuenta
+                if lock_time:
+                    lock_time = datetime.datetime.strptime(lock_time, '%Y-%m-%d %H:%M:%S')
+                    if datetime.datetime.now() > lock_time:
+                        # Desbloquear la cuenta (resetear intentos fallidos)
+                        cur.execute("UPDATE Users SET FailedAttempts = 0, LockTime = NULL WHERE WORKID = ?", (WorkID,))
+                        con.commit()
+                        failed_attempts = 0  # Reiniciar intentos fallidos
+                    else:
+                        return render_template("AccountLocked.html")
+
+            # Verificar la contraseña
+            if hashed_password != user[3]:  # Contraseña almacenada está en el índice 3
+                # Incrementar el contador de intentos fallidos
+                failed_attempts += 1
+                if failed_attempts >= 5:
+                    # Si supera el límite, bloquear la cuenta durante 10 minutos
+                    lock_time = datetime.datetime.now() + datetime.timedelta(minutes=10)
+                    cur.execute("UPDATE Users SET FailedAttempts = ?, LockTime = ? WHERE WORKID = ?", (failed_attempts, lock_time.strftime('%Y-%m-%d %H:%M:%S'), WorkID))
+                    con.commit()
+                else:
+                    cur.execute("UPDATE Users SET FailedAttempts = ? WHERE WORKID = ?", (failed_attempts, WorkID))
+                    con.commit()
+
+                log_action("Intento de inicio de sesión fallido", WorkID)
+                return render_template("NoMatchingUser.html")
+
+            # Si la contraseña es correcta, resetear el contador de intentos fallidos
+            cur.execute("UPDATE Users SET FailedAttempts = 0 WHERE WORKID = ?", (WorkID,))
+            con.commit()
+
             # Obtén el rol del usuario
-            user_role = rows[0][5] 
+            user_role = user[5]  # Columna 'Role'
 
             # Genera token de autenticación y guarda el ID del usuario en sesión
             token = generate_token(WorkID)
-            user[0] = rows[0][0]
 
             # Guarda el rol en la sesión
             session['user_role'] = user_role
+            session['user_id'] = user[0]
 
             # Registra inicio de sesión exitoso
             log_action("Inicio de sesión exitoso", WorkID)
@@ -214,7 +255,6 @@ def login():
             return render_template("Error.html")
         finally:
             con.close()
-
 
 # Ruta para el formulario de registro
 @app.route('/signup', methods=['POST', 'GET'])
@@ -277,9 +317,9 @@ def signupvalid():
 @app.route('/UserMainPage', methods=['POST', 'GET'])
 def UserMain():
     session_token = request.cookies.get('AuthToken')
+    user_id = session.get('user_id')
 
-    # Verifica el token de autenticación
-    if not check_token(session_token, user[0]):
+    if not session_token or not check_token(session_token, user_id):
         return render_template('TokenError.html')
 
     # Obtiene los archivos para mostrar
@@ -294,7 +334,9 @@ def UserMain():
 @app.route('/ManagerMainPage', methods=['POST', 'GET'])
 def ManagerMain():
     session_token = request.cookies.get('AuthToken')
-    if not check_token(session_token, user[0]):
+    user_id = session.get('user_id')
+
+    if not session_token or not check_token(session_token, user_id):
         return render_template('TokenError.html')
 
     conn = sqlite3.connect('database.db')
@@ -308,7 +350,9 @@ def ManagerMain():
 @app.route('/AdminMainPage', methods=['POST', 'GET'])
 def AdminMain():
     session_token = request.cookies.get('AuthToken')
-    if not check_token(session_token, user[0]):
+    user_id = session.get('user_id')
+
+    if not session_token or not check_token(session_token, user_id):
         return render_template('TokenError.html')
 
     # Obtiene tanto usuarios como archivos para mostrar
@@ -330,10 +374,13 @@ def allowed_file(filename):
 def uploadfile():
     # Obtener el rol del usuario desde la sesión
     user_role = session.get('user_role', None)
+    user_id = session.get('user_id')
 
     if request.method == 'POST':
         session_token = request.cookies.get('AuthToken')
-        if not check_token(session_token, user[0]):
+        user_id = session.get('user_id')
+
+        if not session_token or not check_token(session_token, user_id):
             return render_template('TokenError.html')
 
         if 'file' not in request.files:
@@ -358,13 +405,13 @@ def uploadfile():
             cursor = conn.cursor()
             cursor.execute(
                 "INSERT INTO Files (FileName, FileData, WorkID) VALUES (?, ?, ?)",
-                (filename, encrypted_data, user[0])
+                (filename, encrypted_data, user_id)
             )
             conn.commit()
             conn.close()
 
             # Registrar en los logs
-            log_action(f"Subió el archivo cifrado: {filename}", user[0])
+            log_action(f"Subió el archivo cifrado: {filename}", user_id)
 
         # Redirigir según el tipo de usuario
         if user_role == 'Admin':
@@ -379,6 +426,7 @@ def uploadfile():
 @app.route('/download/<int:file_id>')
 def downloadfile(file_id):
     conn = sqlite3.connect('database.db')
+    user_id = session.get('user_id')
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM Files WHERE FileId=?", (file_id,))
     file = cursor.fetchone()
@@ -391,7 +439,7 @@ def downloadfile(file_id):
         # Descifrar los datos del archivo
         decrypted_data = cipher.decrypt(encrypted_data)
         # Registrar en los logs
-        log_action(f"Archivo '{file_name}' descifrado y enviado al usuario.", user[0])
+        log_action(f"Archivo '{file_name}' descifrado y enviado al usuario.", user_id)
 
         return send_file(BytesIO(decrypted_data), download_name=file_name, as_attachment=True)
     else:
@@ -402,6 +450,7 @@ def downloadfile(file_id):
 @app.route('/deletefile/<int:file_id>')
 def deletefile(file_id):
     conn = sqlite3.connect('database.db')
+    user_id = session.get('user_id')
     cursor = conn.cursor()
     cursor.execute("SELECT FileName FROM Files WHERE FileId=?", (file_id,))
     file = cursor.fetchone()
@@ -412,7 +461,7 @@ def deletefile(file_id):
         conn.close()
 
         # Registrar en los logs
-        log_action(f"Eliminó el archivo: {filename}", user[0])
+        log_action(f"Eliminó el archivo: {filename}", user_id)
     else:
         conn.close()
     return redirect(request.referrer)
@@ -422,7 +471,9 @@ def deletefile(file_id):
 def EditWorkID():
     if request.method == 'POST':
         session_token = request.cookies.get('AuthToken')
-        if not check_token(session_token, user[0]):
+        user_id = session.get('user_id')
+
+        if not session_token or not check_token(session_token, user_id):
             return render_template('TokenError.html')
 
         action = request.form.get('action')
@@ -459,9 +510,10 @@ def add_work_id(work_id):
 def delete_work_id(work_id):
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
+    user_id = session.get('user_id')
 
     # Protege contra eliminación del usuario actual
-    if work_id == user[0]:
+    if work_id == user_id:
         return
 
     cursor.execute("DELETE FROM ValidWorkID WHERE WORKID=?", (work_id,))
@@ -482,7 +534,9 @@ def fetch_work_ids():
 def DeleteUser():
     if request.method == 'POST':
         session_token = request.cookies.get('AuthToken')
-        if not check_token(session_token, user[0]):
+        user_id = session.get('user_id')
+
+        if not session_token or not check_token(session_token, user_id):
             return render_template('TokenError.html')
 
         work_id = request.form.get('work_id')
@@ -514,6 +568,7 @@ def delete_user(work_id):
 def searched():
     if request.method == "POST":
         conn = sqlite3.connect('database.db')
+        user_id = session.get('user_id')
         try:
             searched = request.form["searched"]
             cur = conn.cursor()
@@ -531,11 +586,11 @@ def searched():
             files = cur.fetchall()
 
             # Redirecciona según el tipo de usuario
-            if user[0][0] == 'A':
+            if user_id[0] == 'A':
                 return render_template('AdminMainPage.html', Files=files)
-            elif user[0][0] == 'M':
+            elif user_id[0] == 'M':
                 return render_template('ManagerMainPage.html', Files=files)
-            elif user[0][0] == 'U':
+            elif user_id[0] == 'U':
                 return render_template('UserMainPage.html', Files=files)
 
         except:
@@ -548,12 +603,11 @@ def searched():
 @app.route('/admin/view_logs')
 def view_logs():
     session_token = request.cookies.get('AuthToken')
+    user_id = session.get('user_id')
+    user_role = session.get('user_role', None)
 
-    # Verificar si el usuario tiene permisos de administrador
-    print(f"session_token: {session_token}, user[0]: {user[0][0]}")
-
-    if not check_token(session_token, user[0]) or user[0][0] != 'A':
-        print(f"Token inválido o usuario no es administrador: {user[0]}")
+    if not check_token(session_token, user_id) or user_role[0] != 'A':
+        print(f"Token inválido o usuario no es administrador: {user_id}")
         return "Acceso denegado", 403
 
     try:
