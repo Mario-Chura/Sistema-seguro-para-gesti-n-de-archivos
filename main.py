@@ -11,7 +11,8 @@ from dotenv import load_dotenv
 from setup import start_db
 from check import generate_token, check_token
 import random
-from datetime import datetime, timedelta
+import datetime
+
 
 # Importar Fernet para cifrado
 from cryptography.fernet import Fernet
@@ -196,27 +197,48 @@ def login():
             failed_attempts = user[6]  # Columna 'FailedAttempts'
             lock_time = user[7]  # Columna 'LockTime'
 
+            print(f"a: {failed_attempts}, {lock_time}")
+
             # Si la cuenta está bloqueada
             if failed_attempts >= 5:
                 # Si el bloqueo ha expirado, desbloquear la cuenta
                 if lock_time:
                     lock_time = datetime.datetime.strptime(lock_time, '%Y-%m-%d %H:%M:%S')
                     if datetime.datetime.now() > lock_time:
-                        # Desbloquear la cuenta (resetear intentos fallidos)
                         cur.execute("UPDATE Users SET FailedAttempts = 0, LockTime = NULL WHERE WORKID = ?", (WorkID,))
                         con.commit()
                         failed_attempts = 0  # Reiniciar intentos fallidos
                     else:
                         return render_template("AccountLocked.html")
 
+            print(f"b: {failed_attempts}, {lock_time}")
+
             # Verificar la contraseña
-            if hashed_password != user[3]:  # Contraseña almacenada está en el índice 3
+            if hashed_password != user[3]:
                 # Incrementar el contador de intentos fallidos
                 failed_attempts += 1
+
+                print(f"c: {failed_attempts}, {lock_time}")
+
                 if failed_attempts >= 5:
-                    # Si supera el límite, bloquear la cuenta durante 10 minutos
+                    print(f"d: {failed_attempts}, {lock_time}")
+
+                    print(f"Fecha y hora actuales: {datetime.datetime.now()}")
+
+                    # Calcular el tiempo de bloqueo sumando 10 minutos a la hora actual
                     lock_time = datetime.datetime.now() + datetime.timedelta(minutes=10)
-                    cur.execute("UPDATE Users SET FailedAttempts = ?, LockTime = ? WHERE WORKID = ?", (failed_attempts, lock_time.strftime('%Y-%m-%d %H:%M:%S'), WorkID))
+
+                    # Convertir a formato string para guardarlo en la base de datos
+                    lock_time_str = lock_time.strftime('%Y-%m-%d %H:%M:%S')
+
+                    print(f"e: {failed_attempts}, {lock_time_str}")
+
+                    # Actualizar la base de datos con el nuevo tiempo de bloqueo
+                    cur.execute("UPDATE Users SET FailedAttempts = ?, LockTime = ? WHERE WORKID = ?", 
+                                (failed_attempts, lock_time_str, WorkID))
+
+                    print(f"f: {failed_attempts}, {lock_time_str}")
+
                     con.commit()
                 else:
                     cur.execute("UPDATE Users SET FailedAttempts = ? WHERE WORKID = ?", (failed_attempts, WorkID))
