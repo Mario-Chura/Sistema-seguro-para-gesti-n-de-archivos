@@ -128,13 +128,31 @@ def verify_code():
     stored_code = session.get('verification_code')  # Código almacenado en la sesión
 
     if user_code == stored_code:
-        # Código válido, redirigir al usuario según su rol
-        if user[0][0] == 'A':
-            return redirect('/AdminMainPage')
-        elif user[0][0] == 'M':
-            return redirect('/ManagerMainPage')
-        elif user[0][0] == 'U':
-            return redirect('/UserMainPage')
+        # Conectar a la base de datos y obtener el rol del usuario
+        con = sqlite3.connect('database.db')
+        try:
+            cur = con.cursor()
+            cur.execute("SELECT Role FROM Users WHERE WORKID = ?", (user[0],))
+            role = cur.fetchone()
+
+            if role:
+                # Redirigir según el rol obtenido
+                if role[0] == 'Admin':
+                    return redirect('/AdminMainPage')
+                elif role[0] == 'Manager':
+                    return redirect('/ManagerMainPage')
+                elif role[0] == 'User':
+                    return redirect('/UserMainPage')
+                else:
+                    # Caso para manejar si el rol no es válido (no esperado)
+                    return "Rol de usuario no reconocido", 400
+            else:
+                return "Usuario no encontrado", 404
+        except Exception as e:
+            logging.error(f"Error al obtener el rol: {e}")
+            return "Error interno del servidor", 500
+        finally:
+            con.close()
     else:
         # Código inválido
         return "Código de verificación incorrecto", 403
@@ -528,23 +546,39 @@ def searched():
 @app.route('/admin/view_logs')
 def view_logs():
     session_token = request.cookies.get('AuthToken')
+
     # Verificar si el usuario tiene permisos de administrador
+    print(f"session_token: {session_token}, user[0]: {user[0][0]}")
+
     if not check_token(session_token, user[0]) or user[0][0] != 'A':
+        print(f"Token inválido o usuario no es administrador: {user[0]}")
         return "Acceso denegado", 403
 
     try:
+        log_file_path = os.path.join(os.getcwd(), 'admin_logs.log')
+        print(f"Ruta del archivo de logs: {log_file_path}")
+        
+        # Verificar si el archivo de logs existe
+        if not os.path.exists(log_file_path):
+            print("El archivo de logs no existe")
+            return "Archivo de logs no encontrado", 500
+        
         # Leer el contenido del archivo de logs
-        with open("admin_logs.log", "r") as log_file:
-            all_logs = log_file.readlines()  # Leer todas las líneas
+        with open(log_file_path, "rb") as log_file:
+            content = log_file.read()
+            decoded_content = content.decode('utf-8', errors='ignore')  # Ignorar caracteres no decodificables
+            all_logs = decoded_content.splitlines()  # Leer todas las líneas
 
         # Filtrar las líneas relevantes
         filtered_logs = [line for line in all_logs if "Usuario:" in line]
 
         # Renderizar el archivo Logs.html y pasar los logs filtrados como contexto
         return render_template("Logs.html", logs=filtered_logs)
+    
     except Exception as e:
         logging.error(f"Error al leer el archivo de logs: {e}")
         return "No se pudo leer el archivo de logs", 500
+
 #________________________________________________________________________________________
 
 
