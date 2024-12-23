@@ -693,3 +693,252 @@
 2024-12-23 11:01:22,233 - INFO - 127.0.0.1 - - [23/Dec/2024 11:01:22] "GET /AdminMainPage HTTP/1.1" 200 -
 2024-12-23 11:01:22,258 - INFO - 127.0.0.1 - - [23/Dec/2024 11:01:22] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
 2024-12-23 11:01:22,258 - INFO - 127.0.0.1 - - [23/Dec/2024 11:01:22] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:46:22,962 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-23 13:46:22,962 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-23 13:46:22,964 - INFO -  * Restarting with stat
+2024-12-23 13:46:23,153 - WARNING -  * Debugger is active!
+2024-12-23 13:46:23,164 - INFO -  * Debugger PIN: 141-606-940
+2024-12-23 13:46:28,174 - INFO - 127.0.0.1 - - [23/Dec/2024 13:46:28] "GET / HTTP/1.1" 200 -
+2024-12-23 13:46:28,275 - INFO - 127.0.0.1 - - [23/Dec/2024 13:46:28] "GET /static/Login.css HTTP/1.1" 200 -
+2024-12-23 13:46:28,276 - INFO - 127.0.0.1 - - [23/Dec/2024 13:46:28] "GET /static/logo.png HTTP/1.1" 200 -
+2024-12-23 13:46:28,356 - INFO - 127.0.0.1 - - [23/Dec/2024 13:46:28] "GET /static/favicon.png HTTP/1.1" 200 -
+2024-12-23 13:46:36,364 - INFO - 127.0.0.1 - - [23/Dec/2024 13:46:36] "GET / HTTP/1.1" 200 -
+2024-12-23 13:46:36,404 - INFO - 127.0.0.1 - - [23/Dec/2024 13:46:36] "[36mGET /static/Login.css HTTP/1.1[0m" 304 -
+2024-12-23 13:46:36,406 - INFO - 127.0.0.1 - - [23/Dec/2024 13:46:36] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:46:45,552 - INFO - Usuario: Admin - Acción: Inicio de sesión exitoso
+2024-12-23 13:46:45,553 - INFO - 127.0.0.1 - - [23/Dec/2024 13:46:45] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-23 13:46:48,599 - INFO - 127.0.0.1 - - [23/Dec/2024 13:46:48] "GET /send_verification HTTP/1.1" 200 -
+2024-12-23 13:46:48,668 - INFO - 127.0.0.1 - - [23/Dec/2024 13:46:48] "[33mGET /static/styles.css HTTP/1.1[0m" 404 -
+2024-12-23 13:46:58,142 - INFO - 127.0.0.1 - - [23/Dec/2024 13:46:58] "[32mPOST /verify_code HTTP/1.1[0m" 302 -
+2024-12-23 13:46:58,155 - INFO - 127.0.0.1 - - [23/Dec/2024 13:46:58] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 13:46:58,202 - INFO - 127.0.0.1 - - [23/Dec/2024 13:46:58] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 13:46:58,204 - INFO - 127.0.0.1 - - [23/Dec/2024 13:46:58] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:46:59,873 - INFO - 127.0.0.1 - - [23/Dec/2024 13:46:59] "GET /admin/view_logs HTTP/1.1" 200 -
+2024-12-23 13:47:02,164 - INFO - 127.0.0.1 - - [23/Dec/2024 13:47:02] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 13:47:02,203 - INFO - 127.0.0.1 - - [23/Dec/2024 13:47:02] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:47:02,207 - INFO - 127.0.0.1 - - [23/Dec/2024 13:47:02] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 13:47:03,624 - INFO - 127.0.0.1 - - [23/Dec/2024 13:47:03] "GET /uploadfile HTTP/1.1" 200 -
+2024-12-23 13:47:03,664 - INFO - 127.0.0.1 - - [23/Dec/2024 13:47:03] "[36mGET /static/UploadFile.css HTTP/1.1[0m" 304 -
+2024-12-23 13:47:03,665 - INFO - 127.0.0.1 - - [23/Dec/2024 13:47:03] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:47:04,899 - INFO - 127.0.0.1 - - [23/Dec/2024 13:47:04] "GET /ManagerMainPage HTTP/1.1" 200 -
+2024-12-23 13:47:04,933 - INFO - 127.0.0.1 - - [23/Dec/2024 13:47:04] "[36mGET /static/ManagerMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 13:47:04,935 - INFO - 127.0.0.1 - - [23/Dec/2024 13:47:04] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:47:11,429 - INFO - 127.0.0.1 - - [23/Dec/2024 13:47:11] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 13:47:11,462 - INFO - 127.0.0.1 - - [23/Dec/2024 13:47:11] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 13:47:11,465 - INFO - 127.0.0.1 - - [23/Dec/2024 13:47:11] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:49:29,878 - INFO -  * Detected change in '/home/melsy/unsa/si/Sistema-seguro-para-gestion-de-archivos/main.py', reloading
+2024-12-23 13:49:29,926 - INFO -  * Restarting with stat
+2024-12-23 13:49:30,133 - WARNING -  * Debugger is active!
+2024-12-23 13:49:30,134 - INFO -  * Debugger PIN: 141-606-940
+2024-12-23 13:52:15,729 - INFO -  * Detected change in '/home/melsy/unsa/si/Sistema-seguro-para-gestion-de-archivos/main.py', reloading
+2024-12-23 13:52:15,784 - INFO -  * Restarting with stat
+2024-12-23 13:52:16,131 - WARNING -  * Debugger is active!
+2024-12-23 13:52:16,132 - INFO -  * Debugger PIN: 141-606-940
+2024-12-23 13:52:24,175 - INFO -  * Detected change in '/home/melsy/unsa/si/Sistema-seguro-para-gestion-de-archivos/main.py', reloading
+2024-12-23 13:52:24,223 - INFO -  * Restarting with stat
+2024-12-23 13:52:24,416 - WARNING -  * Debugger is active!
+2024-12-23 13:52:24,417 - INFO -  * Debugger PIN: 141-606-940
+2024-12-23 13:53:57,697 - INFO -  * Detected change in '/home/melsy/unsa/si/Sistema-seguro-para-gestion-de-archivos/main.py', reloading
+2024-12-23 13:53:57,739 - INFO -  * Restarting with stat
+2024-12-23 13:53:57,933 - WARNING -  * Debugger is active!
+2024-12-23 13:53:57,934 - INFO -  * Debugger PIN: 141-606-940
+2024-12-23 13:54:00,947 - INFO -  * Detected change in '/home/melsy/unsa/si/Sistema-seguro-para-gestion-de-archivos/main.py', reloading
+2024-12-23 13:54:00,969 - INFO -  * Restarting with stat
+2024-12-23 13:54:01,064 - WARNING -  * Debugger is active!
+2024-12-23 13:54:01,065 - INFO -  * Debugger PIN: 141-606-940
+2024-12-23 13:54:03,073 - INFO -  * Detected change in '/home/melsy/unsa/si/Sistema-seguro-para-gestion-de-archivos/main.py', reloading
+2024-12-23 13:54:03,096 - INFO -  * Restarting with stat
+2024-12-23 13:54:03,203 - WARNING -  * Debugger is active!
+2024-12-23 13:54:03,204 - INFO -  * Debugger PIN: 141-606-940
+2024-12-23 13:54:07,766 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:07] "GET / HTTP/1.1" 200 -
+2024-12-23 13:54:07,798 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:07] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:54:07,800 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:07] "[36mGET /static/Login.css HTTP/1.1[0m" 304 -
+2024-12-23 13:54:18,458 - INFO - Usuario: Admin - Acción: Intento de inicio de sesión fallido
+2024-12-23 13:54:18,460 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:18] "POST /login HTTP/1.1" 200 -
+2024-12-23 13:54:18,483 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:18] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:54:18,484 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:18] "[36mGET /static/InvalidWorkID.css HTTP/1.1[0m" 304 -
+2024-12-23 13:54:21,305 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:21] "GET / HTTP/1.1" 200 -
+2024-12-23 13:54:21,323 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:21] "[36mGET /static/Login.css HTTP/1.1[0m" 304 -
+2024-12-23 13:54:21,324 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:21] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:54:26,158 - INFO - Usuario: Admin - Acción: Inicio de sesión exitoso
+2024-12-23 13:54:26,158 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:26] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-23 13:54:29,266 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:29] "GET /send_verification HTTP/1.1" 200 -
+2024-12-23 13:54:29,290 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:29] "[33mGET /static/styles.css HTTP/1.1[0m" 404 -
+2024-12-23 13:54:38,159 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:38] "[32mPOST /verify_code HTTP/1.1[0m" 302 -
+2024-12-23 13:54:38,168 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:38] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 13:54:38,188 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:38] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:54:38,189 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:38] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 13:54:39,410 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:39] "GET /EditWorkID HTTP/1.1" 200 -
+2024-12-23 13:54:39,433 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:39] "[36mGET /static/EditWorkID.css HTTP/1.1[0m" 304 -
+2024-12-23 13:54:39,435 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:39] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:54:41,177 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:41] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 13:54:41,198 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:41] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:54:41,199 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:41] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 13:54:42,896 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:42] "GET /DeleteUser HTTP/1.1" 200 -
+2024-12-23 13:54:42,921 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:42] "[36mGET /static/DeleteUser.css HTTP/1.1[0m" 304 -
+2024-12-23 13:54:42,925 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:42] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:54:43,864 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:43] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 13:54:43,881 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:43] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:54:43,881 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:43] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 13:54:44,823 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:44] "GET /uploadfile HTTP/1.1" 200 -
+2024-12-23 13:54:44,844 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:44] "[36mGET /static/UploadFile.css HTTP/1.1[0m" 304 -
+2024-12-23 13:54:44,845 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:44] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:54:45,862 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:45] "GET /ManagerMainPage HTTP/1.1" 200 -
+2024-12-23 13:54:45,881 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:45] "[36mGET /static/ManagerMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 13:54:45,884 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:45] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:54:53,322 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:53] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 13:54:53,343 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:53] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 13:54:53,344 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:53] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:54:58,151 - INFO - 127.0.0.1 - - [23/Dec/2024 13:54:58] "GET /admin/view_logs HTTP/1.1" 200 -
+2024-12-23 13:55:00,335 - INFO - 127.0.0.1 - - [23/Dec/2024 13:55:00] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 13:55:00,356 - INFO - 127.0.0.1 - - [23/Dec/2024 13:55:00] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 13:55:00,358 - INFO - 127.0.0.1 - - [23/Dec/2024 13:55:00] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:56:01,570 - INFO -  * Detected change in '/home/melsy/unsa/si/Sistema-seguro-para-gestion-de-archivos/main.py', reloading
+2024-12-23 13:56:01,609 - INFO -  * Restarting with stat
+2024-12-23 13:56:01,805 - WARNING -  * Debugger is active!
+2024-12-23 13:56:01,806 - INFO -  * Debugger PIN: 141-606-940
+2024-12-23 13:56:03,125 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:03] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 13:56:03,151 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:03] "[36mGET /static/InvalidWorkID.css HTTP/1.1[0m" 304 -
+2024-12-23 13:56:03,151 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:03] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:56:03,194 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:03] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+2024-12-23 13:56:04,721 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:04] "GET / HTTP/1.1" 200 -
+2024-12-23 13:56:04,741 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:04] "[36mGET /static/Login.css HTTP/1.1[0m" 304 -
+2024-12-23 13:56:04,742 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:04] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:56:11,364 - INFO - Usuario: Admin - Acción: Inicio de sesión exitoso
+2024-12-23 13:56:11,365 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:11] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-23 13:56:14,328 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:14] "GET /send_verification HTTP/1.1" 200 -
+2024-12-23 13:56:14,351 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:14] "[33mGET /static/styles.css HTTP/1.1[0m" 404 -
+2024-12-23 13:56:25,482 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:25] "[32mPOST /verify_code HTTP/1.1[0m" 302 -
+2024-12-23 13:56:25,492 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:25] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 13:56:25,514 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:25] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:56:25,514 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:25] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 13:56:27,074 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:27] "GET /admin/view_logs HTTP/1.1" 200 -
+2024-12-23 13:56:29,054 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:29] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 13:56:29,071 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:29] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 13:56:29,073 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:29] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:56:32,167 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:32] "GET /uploadfile HTTP/1.1" 200 -
+2024-12-23 13:56:32,188 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:32] "[36mGET /static/UploadFile.css HTTP/1.1[0m" 304 -
+2024-12-23 13:56:32,190 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:32] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:56:33,158 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:33] "GET /ManagerMainPage HTTP/1.1" 200 -
+2024-12-23 13:56:33,176 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:33] "[36mGET /static/ManagerMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 13:56:33,178 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:33] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:56:38,345 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:38] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 13:56:38,367 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:38] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 13:56:38,368 - INFO - 127.0.0.1 - - [23/Dec/2024 13:56:38] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:57:07,593 - INFO - 127.0.0.1 - - [23/Dec/2024 13:57:07] "GET /EditWorkID HTTP/1.1" 200 -
+2024-12-23 13:57:07,614 - INFO - 127.0.0.1 - - [23/Dec/2024 13:57:07] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 13:57:07,614 - INFO - 127.0.0.1 - - [23/Dec/2024 13:57:07] "[36mGET /static/EditWorkID.css HTTP/1.1[0m" 304 -
+2024-12-23 14:00:13,276 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:13] "GET /EditWorkID HTTP/1.1" 200 -
+2024-12-23 14:00:13,303 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:13] "[36mGET /static/EditWorkID.css HTTP/1.1[0m" 304 -
+2024-12-23 14:00:13,303 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:13] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:00:13,362 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:13] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+2024-12-23 14:00:15,697 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:15] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 14:00:15,720 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:15] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 14:00:15,722 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:15] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:00:17,088 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:17] "[35m[1mGET /uploadfile HTTP/1.1[0m" 500 -
+2024-12-23 14:00:17,107 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:17] "GET /uploadfile?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-12-23 14:00:17,109 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:17] "GET /uploadfile?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-12-23 14:00:17,153 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:17] "GET /uploadfile?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-12-23 14:00:17,200 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:17] "[36mGET /uploadfile?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-12-23 14:00:32,480 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:32] "GET /uploadfile HTTP/1.1" 200 -
+2024-12-23 14:00:32,504 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:32] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:00:32,504 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:32] "[36mGET /static/UploadFile.css HTTP/1.1[0m" 304 -
+2024-12-23 14:00:34,950 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:34] "GET /ManagerMainPage HTTP/1.1" 200 -
+2024-12-23 14:00:34,971 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:34] "[36mGET /static/ManagerMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 14:00:34,973 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:34] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:00:39,927 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:39] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 14:00:39,956 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:39] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 14:00:39,958 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:39] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:00:39,984 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:39] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+2024-12-23 14:00:40,062 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:40] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 14:00:40,083 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:40] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:00:40,083 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:40] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 14:00:40,118 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:40] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+2024-12-23 14:00:40,223 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:40] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 14:00:40,247 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:40] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 14:00:40,249 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:40] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:00:40,280 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:40] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+2024-12-23 14:00:40,439 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:40] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 14:00:40,459 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:40] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:00:40,459 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:40] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 14:00:40,493 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:40] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+2024-12-23 14:00:41,752 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:41] "GET /uploadfile HTTP/1.1" 200 -
+2024-12-23 14:00:41,771 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:41] "[36mGET /static/UploadFile.css HTTP/1.1[0m" 304 -
+2024-12-23 14:00:41,773 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:41] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:00:43,162 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:43] "GET /ManagerMainPage HTTP/1.1" 200 -
+2024-12-23 14:00:43,184 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:43] "[36mGET /static/ManagerMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 14:00:43,185 - INFO - 127.0.0.1 - - [23/Dec/2024 14:00:43] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:01:24,751 - INFO -  * Detected change in '/home/melsy/unsa/si/Sistema-seguro-para-gestion-de-archivos/main.py', reloading
+2024-12-23 14:01:24,783 - INFO -  * Restarting with stat
+2024-12-23 14:01:24,981 - WARNING -  * Debugger is active!
+2024-12-23 14:01:24,982 - INFO -  * Debugger PIN: 141-606-940
+2024-12-23 14:01:27,492 - INFO - 127.0.0.1 - - [23/Dec/2024 14:01:27] "GET /ManagerMainPage HTTP/1.1" 200 -
+2024-12-23 14:01:27,519 - INFO - 127.0.0.1 - - [23/Dec/2024 14:01:27] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:01:27,520 - INFO - 127.0.0.1 - - [23/Dec/2024 14:01:27] "[36mGET /static/InvalidWorkID.css HTTP/1.1[0m" 304 -
+2024-12-23 14:01:27,555 - INFO - 127.0.0.1 - - [23/Dec/2024 14:01:27] "[36mGET /static/favicon.png HTTP/1.1[0m" 304 -
+2024-12-23 14:01:28,912 - INFO - 127.0.0.1 - - [23/Dec/2024 14:01:28] "GET / HTTP/1.1" 200 -
+2024-12-23 14:01:28,933 - INFO - 127.0.0.1 - - [23/Dec/2024 14:01:28] "[36mGET /static/Login.css HTTP/1.1[0m" 304 -
+2024-12-23 14:01:28,934 - INFO - 127.0.0.1 - - [23/Dec/2024 14:01:28] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:01:37,457 - INFO - Usuario: Admin - Acción: Inicio de sesión exitoso
+2024-12-23 14:01:37,457 - INFO - 127.0.0.1 - - [23/Dec/2024 14:01:37] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-23 14:01:40,820 - INFO - 127.0.0.1 - - [23/Dec/2024 14:01:40] "GET /send_verification HTTP/1.1" 200 -
+2024-12-23 14:01:40,843 - INFO - 127.0.0.1 - - [23/Dec/2024 14:01:40] "[33mGET /static/styles.css HTTP/1.1[0m" 404 -
+2024-12-23 14:01:49,772 - INFO - 127.0.0.1 - - [23/Dec/2024 14:01:49] "[32mPOST /verify_code HTTP/1.1[0m" 302 -
+2024-12-23 14:01:49,784 - INFO - 127.0.0.1 - - [23/Dec/2024 14:01:49] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 14:01:49,805 - INFO - 127.0.0.1 - - [23/Dec/2024 14:01:49] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 14:01:49,807 - INFO - 127.0.0.1 - - [23/Dec/2024 14:01:49] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:01:56,312 - INFO - 127.0.0.1 - - [23/Dec/2024 14:01:56] "[35m[1mGET /uploadfile HTTP/1.1[0m" 500 -
+2024-12-23 14:01:56,335 - INFO - 127.0.0.1 - - [23/Dec/2024 14:01:56] "[36mGET /uploadfile?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-12-23 14:01:56,336 - INFO - 127.0.0.1 - - [23/Dec/2024 14:01:56] "[36mGET /uploadfile?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-12-23 14:01:56,377 - INFO - 127.0.0.1 - - [23/Dec/2024 14:01:56] "[36mGET /uploadfile?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-12-23 14:01:56,671 - INFO - 127.0.0.1 - - [23/Dec/2024 14:01:56] "[36mGET /uploadfile?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-12-23 14:03:05,291 - INFO -  * Detected change in '/home/melsy/unsa/si/Sistema-seguro-para-gestion-de-archivos/main.py', reloading
+2024-12-23 14:03:05,320 - INFO -  * Restarting with stat
+2024-12-23 14:03:05,418 - WARNING -  * Debugger is active!
+2024-12-23 14:03:05,419 - INFO -  * Debugger PIN: 141-606-940
+2024-12-23 14:03:07,922 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:07] "GET /uploadfile HTTP/1.1" 200 -
+2024-12-23 14:03:07,950 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:07] "[36mGET /static/UploadFile.css HTTP/1.1[0m" 304 -
+2024-12-23 14:03:07,950 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:07] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:03:09,327 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:09] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 14:03:09,349 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:09] "[36mGET /static/InvalidWorkID.css HTTP/1.1[0m" 304 -
+2024-12-23 14:03:09,349 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:09] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:03:10,719 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:10] "GET / HTTP/1.1" 200 -
+2024-12-23 14:03:10,753 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:10] "[36mGET /static/Login.css HTTP/1.1[0m" 304 -
+2024-12-23 14:03:10,755 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:10] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:03:15,605 - INFO - Usuario: Admin - Acción: Inicio de sesión exitoso
+2024-12-23 14:03:15,606 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:15] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-12-23 14:03:18,362 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:18] "GET /send_verification HTTP/1.1" 200 -
+2024-12-23 14:03:18,390 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:18] "[33mGET /static/styles.css HTTP/1.1[0m" 404 -
+2024-12-23 14:03:28,313 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:28] "[32mPOST /verify_code HTTP/1.1[0m" 302 -
+2024-12-23 14:03:28,321 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:28] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 14:03:28,344 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:28] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 14:03:28,345 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:28] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:03:29,868 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:29] "GET /uploadfile HTTP/1.1" 200 -
+2024-12-23 14:03:29,888 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:29] "[36mGET /static/UploadFile.css HTTP/1.1[0m" 304 -
+2024-12-23 14:03:29,891 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:29] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:03:30,771 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:30] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 14:03:30,794 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:30] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 14:03:30,795 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:30] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:03:32,952 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:32] "GET /admin/view_logs HTTP/1.1" 200 -
+2024-12-23 14:03:34,895 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:34] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 14:03:34,916 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:34] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 14:03:34,918 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:34] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:03:36,593 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:36] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 14:03:36,617 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:36] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:03:36,618 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:36] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 14:03:37,777 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:37] "GET /EditWorkID HTTP/1.1" 200 -
+2024-12-23 14:03:37,795 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:37] "[36mGET /static/EditWorkID.css HTTP/1.1[0m" 304 -
+2024-12-23 14:03:37,796 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:37] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:03:39,266 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:39] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 14:03:39,287 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:39] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 14:03:39,288 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:39] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:03:42,047 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:42] "GET /DeleteUser HTTP/1.1" 200 -
+2024-12-23 14:03:42,065 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:42] "[36mGET /static/DeleteUser.css HTTP/1.1[0m" 304 -
+2024-12-23 14:03:42,068 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:42] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:03:43,523 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:43] "GET /AdminMainPage HTTP/1.1" 200 -
+2024-12-23 14:03:43,544 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:43] "[36mGET /static/AdminMainPage.css HTTP/1.1[0m" 304 -
+2024-12-23 14:03:43,545 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:43] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:03:44,618 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:44] "GET /EditWorkID HTTP/1.1" 200 -
+2024-12-23 14:03:44,639 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:44] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2024-12-23 14:03:44,640 - INFO - 127.0.0.1 - - [23/Dec/2024 14:03:44] "[36mGET /static/EditWorkID.css HTTP/1.1[0m" 304 -

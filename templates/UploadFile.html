@@ -18,7 +18,7 @@
             <a href="/">
                 <button type="button">Cerrar sesión</button>
             </a>
-            <a href="/ManagerMainPage">
+            <a href="{{ url_for('AdminMain') if user_role == 'Admin' else url_for('ManagerMain') }}">
                 <button type="button">Inicio</button>
             </a>
         </div>

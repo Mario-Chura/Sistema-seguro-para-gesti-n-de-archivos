@@ -128,34 +128,25 @@ def verify_code():
     stored_code = session.get('verification_code')  # Código almacenado en la sesión
 
     if user_code == stored_code:
-        # Conectar a la base de datos y obtener el rol del usuario
-        con = sqlite3.connect('database.db')
-        try:
-            cur = con.cursor()
-            cur.execute("SELECT Role FROM Users WHERE WORKID = ?", (user[0],))
-            role = cur.fetchone()
+        user_role = session.get('user_role', None)  # Obtener el rol de la sesión
 
-            if role:
-                # Redirigir según el rol obtenido
-                if role[0] == 'Admin':
-                    return redirect('/AdminMainPage')
-                elif role[0] == 'Manager':
-                    return redirect('/ManagerMainPage')
-                elif role[0] == 'User':
-                    return redirect('/UserMainPage')
-                else:
-                    # Caso para manejar si el rol no es válido (no esperado)
-                    return "Rol de usuario no reconocido", 400
+        if user_role:
+            # Redirigir según el rol obtenido
+            if user_role == 'Admin':
+                return redirect('/AdminMainPage')
+            elif user_role == 'Manager':
+                return redirect('/ManagerMainPage')
+            elif user_role == 'User':
+                return redirect('/UserMainPage')
             else:
-                return "Usuario no encontrado", 404
-        except Exception as e:
-            logging.error(f"Error al obtener el rol: {e}")
-            return "Error interno del servidor", 500
-        finally:
-            con.close()
+                # Caso para manejar si el rol no es válido (no esperado)
+                return "Rol de usuario no reconocido", 400
+        else:
+            return "No se pudo determinar el rol del usuario", 400
     else:
         # Código inválido
         return "Código de verificación incorrecto", 403
+
 
 
 #__________________________________________________________________________________
@@ -197,9 +188,15 @@ def login():
                 log_action("Intento de inicio de sesión fallido", WorkID)
                 return render_template("NoMatchingUser.html")
 
+            # Obtén el rol del usuario
+            user_role = rows[0][5] 
+
             # Genera token de autenticación y guarda el ID del usuario en sesión
             token = generate_token(WorkID)
             user[0] = rows[0][0]
+
+            # Guarda el rol en la sesión
+            session['user_role'] = user_role
 
             # Registra inicio de sesión exitoso
             log_action("Inicio de sesión exitoso", WorkID)
@@ -331,6 +328,9 @@ def allowed_file(filename):
 # Ruta para subir archivos con cifrado
 @app.route('/uploadfile', methods=['POST', 'GET'])
 def uploadfile():
+    # Obtener el rol del usuario desde la sesión
+    user_role = session.get('user_role', None)
+
     if request.method == 'POST':
         session_token = request.cookies.get('AuthToken')
         if not check_token(session_token, user[0]):
@@ -366,12 +366,14 @@ def uploadfile():
             # Registrar en los logs
             log_action(f"Subió el archivo cifrado: {filename}", user[0])
 
-        # Redirecciona según el tipo de usuario
-        if user[0][0] == 'A':
-            return redirect(url_for('AdminMain'))
-        elif user[0][0] == 'M':
-            return redirect(url_for('ManagerMain'))
-    return render_template('UploadFile.html')
+        # Redirigir según el tipo de usuario
+        if user_role == 'Admin':
+            return redirect('/AdminMainPage')
+        elif user_role == 'Manager':
+            return redirect('/ManagerMainPage')
+
+    return render_template('UploadFile.html', user_role=user_role)
+
 
 # Ruta para descargar archivos con descifrado
 @app.route('/download/<int:file_id>')
