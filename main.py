@@ -83,8 +83,6 @@ def log_action(action, username):
     logging.info(f"Usuario: {username} - Acción: {action}")
 
 
-
-
 #__________________________________________________________________________________
 import random
 
@@ -197,8 +195,6 @@ def login():
             failed_attempts = user[6]  # Columna 'FailedAttempts'
             lock_time = user[7]  # Columna 'LockTime'
 
-            print(f"a: {failed_attempts}, {lock_time}")
-
             # Si la cuenta está bloqueada
             if failed_attempts >= 5:
                 # Si el bloqueo ha expirado, desbloquear la cuenta
@@ -211,33 +207,28 @@ def login():
                     else:
                         return render_template("AccountLocked.html")
 
-            print(f"b: {failed_attempts}, {lock_time}")
+            print(f"a: {failed_attempts}, {lock_time}")
 
             # Verificar la contraseña
             if hashed_password != user[3]:
                 # Incrementar el contador de intentos fallidos
                 failed_attempts += 1
 
-                print(f"c: {failed_attempts}, {lock_time}")
+                print(f"b: {failed_attempts}, {lock_time}")
 
                 if failed_attempts >= 5:
-                    print(f"d: {failed_attempts}, {lock_time}")
-
-                    print(f"Fecha y hora actuales: {datetime.datetime.now()}")
 
                     # Calcular el tiempo de bloqueo sumando 10 minutos a la hora actual
-                    lock_time = datetime.datetime.now() + datetime.timedelta(minutes=10)
+                    lock_time = datetime.datetime.now() + datetime.timedelta(minutes=1)
 
                     # Convertir a formato string para guardarlo en la base de datos
                     lock_time_str = lock_time.strftime('%Y-%m-%d %H:%M:%S')
-
-                    print(f"e: {failed_attempts}, {lock_time_str}")
 
                     # Actualizar la base de datos con el nuevo tiempo de bloqueo
                     cur.execute("UPDATE Users SET FailedAttempts = ?, LockTime = ? WHERE WORKID = ?", 
                                 (failed_attempts, lock_time_str, WorkID))
 
-                    print(f"f: {failed_attempts}, {lock_time_str}")
+                    print(f"c: {failed_attempts}, {lock_time_str}")
 
                     con.commit()
                 else:
@@ -245,7 +236,7 @@ def login():
                     con.commit()
 
                 log_action("Intento de inicio de sesión fallido", WorkID)
-                return render_template("NoMatchingUser.html")
+                return render_template("NoMatchingPassword.html")
 
             # Si la contraseña es correcta, resetear el contador de intentos fallidos
             cur.execute("UPDATE Users SET FailedAttempts = 0 WHERE WORKID = ?", (WorkID,))
